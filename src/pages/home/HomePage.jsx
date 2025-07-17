@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/fragments/Navbar";
-import MainHeader from "../../assets/images/mainHeader.png";
-import movie1 from "../../assets/images/movie1.jpg";
 import Button from "../../components/fragments/Button";
 import CardMovie from "./component/CardMovie";
-import axios from "axios";
 import { getTopMovies } from "../../api/getMovies";
+import Modal from "./component/Modal";
 
 const HomePage = () => {
-
   const [topMovies, setTopMovies] = useState([]);
+  const [selectedId, setSelectedId] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleOpenModal = (id) => {
+    setSelectedId(id);
+    setModalOpen(true);
+  };
 
   useEffect(() => {
     getTopMovies().then((data) => {
@@ -49,10 +53,18 @@ const HomePage = () => {
               key={movie.id}
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}.jpg`}
               name={movie.title}
+              id={movie.id}
+              onClick={handleOpenModal} // 👉 kirim handler dari sini
             >
               {movie.title}
             </CardMovie>
           ))}
+
+          <Modal
+            id={selectedId}
+            open={modalOpen}
+            onClose={() => setModalOpen(false)}
+          />
         </div>
       </div>
     </div>
