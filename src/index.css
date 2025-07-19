@@ -80,3 +80,20 @@
     height: 100%;
     background: linear-gradient(to top, #181f20, transparent);
 }
+.card-reason-gradient{
+    position: absolute;
+    bottom: -35%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, #dc2525, transparent);
+}
+.card-transition-gradient{
+    /* absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/70 */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15%;
+    background: linear-gradient(to top, #181f20, transparent);
+}
