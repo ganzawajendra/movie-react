@@ -53,6 +53,7 @@
 .button:hover{
     background-color: #8E1616;
     transition: all 0.2s;
+    cursor: pointer;
 }
 .bg-manual-red{
     background-color: #dc2525;

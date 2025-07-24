@@ -11,3 +11,8 @@ export const getMovieDetails = async (id) => {
     const response = await axios.get(`${baseUrl}/${id}?api_key=${apiKey}`);
     return response.data;
 }
+
+export const getPopularMovies = async () => {
+    const response = await axios.get(`${baseUrl}/popular?api_key=${apiKey}`);
+    return response.data.results;
+}
