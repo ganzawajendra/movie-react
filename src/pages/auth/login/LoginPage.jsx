@@ -1,11 +1,11 @@
-import React, { use, useContext, useState } from "react";
+import React, { use, useContext, useEffect, useState } from "react";
 import Navbar from "../../../components/fragments/Navbar";
 import Footer from "../../../components/fragments/Footer";
 import InputBar from "../../../components/elements/InputBar";
 import InputSubmit from "../../../components/elements/InputSubmit";
 import Button from "../../../components/fragments/Button";
-import { tmdb } from "../../../api/auth";
 import { useNavigate } from "react-router";
+import { sessionRes, tokenResponse, validateLogin } from "../../../api/auth";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -17,35 +17,35 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      // Step 1: Ambil request token
-      const tokenResponse = await tmdb.get("/authentication/token/new");
-      const requestToken = tokenResponse.data.request_token;
-
-      console.log("Token Diterima:", requestToken);
+      // Step 1: Request token
+      const requestToken = await tokenResponse().then(
+        (res) => res.request_token
+      );
       if (!requestToken) throw new Error("Gagal mendapatkan request token");
 
       // Step 2: Validasi login user
       try {
-        await tmdb.post("/authentication/token/validate_with_login", {
-          username,
-          password,
-          request_token: requestToken,
-        });
+        // Memvalidasi login dari input
+        await validateLogin(username, password, requestToken);
 
-        console.log("Login berhasil divalidasi")
-        localStorage.setItem("validated_token", requestToken);
+        // Create session ID
+        const sessionId = await sessionRes(requestToken).then(
+          (res) => res.session_id
+        );
+        if (!sessionId) throw new Error("Gagal membuat session");
+
+        // Simpan dan redirect ke halaman beranda
         localStorage.setItem("username", username);
-
+        localStorage.setItem("session_id", sessionId);
         navigate("/beranda", { replace: true });
       } catch (validationError) {
-        console.warn("Login gagal, redirect ke otorisasi manual...")
-
-        // Redirect ke halaman TMDB untuk otorisasi manual
+        // Simpan sebagai pending token
         localStorage.setItem("pending_token", requestToken);
         localStorage.setItem("username", username);
 
-        // Jika invalid (username/password salah), redirect ke otentikasi TMDB
-        window.location.href = `https://www.themoviedb.org/authenticate/${requestToken}/allow?redirect_to=http://localhost:5173/beranda`;
+        // Redirect ke halaman TMDB untuk otorisasi manual
+        const redirectURL = encodeURIComponent("http://localhost:5173/login");
+        window.location.href = `https://www.themoviedb.org/authenticate/${requestToken}/allow?redirect_to=${redirectURL}`;
       }
     } catch (error) {
       console.error(
@@ -54,6 +54,35 @@ const LoginPage = () => {
       );
     }
   };
+
+  useEffect(() => {
+    // Memeriksa apakah ada request token di URL
+    const tokenFromURL = new URLSearchParams(window.location.search).get(
+      "request_token"
+    );
+    if (tokenFromURL) {
+      const createSessionId = async () => {
+        try {
+          // Membuat session ID
+          const sessionId = await sessionRes(tokenFromURL).then(
+            (res) => res.session_id
+          );
+          if (!sessionId) throw new Error("Gagal membuat session");
+
+          // Simpan dan redirect ke halaman beranda
+          localStorage.setItem("session_id", sessionId);
+          localStorage.removeItem("validated_token") ||
+            localStorage.removeItem("pending_token");
+          navigate("/beranda", { replace: true });
+
+        } catch (error) {
+          console.error("Login error:", error.message);
+        }
+      };
+      
+      createSessionId();
+    }
+  }, [navigate]);
 
   return (
     <>

@@ -20,7 +20,7 @@ const PosterSection = () => {
     });
   }, []);
 
-  if (!popularMovies) return <div>Loading...</div>;
+  if (!popularMovies) return <div className="w-full h-screen flex items-center justify-center bg-manual-dark text-white">Loading...</div>;
 
   return (
     <>

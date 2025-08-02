@@ -10,12 +10,14 @@ import { BsPersonArmsUp } from "react-icons/bs";
 import { PiBinocularsFill } from "react-icons/pi";
 import CardReason from "./component/CardReason";
 import Footer from "../../components/fragments/Footer";
+import { useNavigate } from "react-router";
 
 const HomePage = () => {
+  const navigate = useNavigate();
   const [topMovies, setTopMovies] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
-
+  
   const reason = [
     {
       title: "Akses ke Film Terbaru",
