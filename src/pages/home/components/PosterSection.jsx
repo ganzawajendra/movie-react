@@ -16,7 +16,6 @@ const PosterSection = () => {
 
   useEffect(() => {
     getPopularMovies().then((data) => {
-      console.log(data);
       setPopularMovies(data);
     });
   }, []);

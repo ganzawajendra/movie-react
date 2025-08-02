@@ -1,6 +1,6 @@
 import React from "react";
 
-const InputBar = ({children, name, type}) => {
+const InputBar = ({children, name, type, ...rest}) => {
   return (
     <>
     {name === "email" ? (
@@ -12,6 +12,7 @@ const InputBar = ({children, name, type}) => {
           placeholder=" "
           required
           autoComplete="off"
+          {...rest}
           className="peer border border-gray-500 w-full px-4 py-2 rounded 
            focus:outline-none focus:pt-4 transition-all duration-300
            [&:not(:placeholder-shown)]:pt-4"
@@ -37,6 +38,7 @@ const InputBar = ({children, name, type}) => {
           placeholder=" " // ini penting untuk memicu peer-placeholder-shown
           required
           autoComplete="off"
+          {...rest}
           className="peer border border-gray-500 w-full px-4 py-2 rounded focus:outline-none focus:pt-4 transition-all duration-300 valid:pt-4 valid:border-gray-500"
         />
         <span
