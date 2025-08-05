@@ -13,9 +13,10 @@ const HomePage = () => {
   const [topTv, setTopTv] = useState();
 
   useEffect(() => {
-    // getTrendingMovies().then((data) => {
-    //   setTrendingMovies(data);
-    // });
+    getTrendingMovies().then((data) => {
+      setTrendingMovies(data);
+    });
+
     getMovieFromCountry("id", "id-ID").then((data) => {
       setIndonesianMovie(data);
     });
@@ -27,7 +28,7 @@ const HomePage = () => {
 
   console.log(topTv);
 
-  if (!indonesianMovie || !topTv)
+  if (!indonesianMovie || !topTv || !trendingMovies)
     return (
       <div className="w-full h-screen flex items-center justify-center bg-manual-dark text-white absolute">
         Loading...
@@ -68,6 +69,21 @@ const HomePage = () => {
                     key={item}
                     src={tv.backdrop_path}
                     name={tv.name}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+          {/* Content 3 */}
+          <div>
+            <CategorySection>Film Trending</CategorySection>
+            <div className="overflow-x-auto scrollbar-hide">
+              <div className="grid grid-flow-col auto-cols-max gap-5 ">
+                {trendingMovies.slice(0, 10).map((movie, item) => (
+                  <HomeMovieCard
+                    key={item}
+                    src={movie.poster_path}
+                    title={movie.title}
                   />
                 ))}
               </div>
