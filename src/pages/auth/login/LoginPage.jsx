@@ -1,4 +1,4 @@
-import React, { use, useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../../../components/fragments/Navbar";
 import Footer from "../../../components/fragments/Footer";
 import InputBar from "../../../components/elements/InputBar";

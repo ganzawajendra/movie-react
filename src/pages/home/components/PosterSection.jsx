@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { getPopularMovies } from "../../../api/getMovies";
+import { getPopularMovies, getTrendingMovies } from "../../../api/getMovies";
 import Button from "../../../components/fragments/Button";
 import { IoIosArrowForward } from "react-icons/io";
+import HomeMovieCard from "./HomeMovieCard";
 
 const PosterSection = () => {
   const [popularMovies, setPopularMovies] = useState();
@@ -20,11 +21,12 @@ const PosterSection = () => {
     });
   }, []);
 
-  if (!popularMovies) return <div className="w-full h-screen flex items-center justify-center bg-manual-dark text-white">Loading...</div>;
+  
+  if (!popularMovies) return <div className="w-full h-screen flex items-center justify-center bg-manual-dark text-white absolute">Loading...</div>;
 
   return (
     <>
-      <div className="flex">
+      <div className="flex flex-col">
         {popularMovies.slice(nextSlide, nextSlide + 1).map((movie) => (
           <div key={movie.id} className="relative min-w-screen">
             <img
@@ -33,7 +35,7 @@ const PosterSection = () => {
               className="w-full h-screen object-cover"
             />
             <div className="card-detail-gradient"></div>
-            <div className="absolute left-40 top-1/2 transfrom -translate-y-1/2">
+            <div className="absolute left-40 top-1/2 transform -translate-y-1/2 ">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="bg-manual-red p-1 rounded shadow w-12 ">
@@ -66,7 +68,7 @@ const PosterSection = () => {
                 </Button>
               </div>
             </div>
-            <div className="absolute flex justify-end right-40 top-1/2 transfrom -translate-y-1/2">
+            <div className="absolute flex justify-end right-40 top-1/2 transform -translate-y-1/2">
                   <button
                     className="bg-manual-red p-1 rounded-full size-8 cursor-pointer flex justify-center items-center"
                     onClick={handleNextSlide}

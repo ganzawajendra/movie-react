@@ -11,6 +11,7 @@ import { PiBinocularsFill } from "react-icons/pi";
 import CardReason from "./component/CardReason";
 import Footer from "../../components/fragments/Footer";
 import { useNavigate } from "react-router";
+import CategoryFilm from "../../components/fragments/CategoryFilm";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -78,9 +79,7 @@ const HomePage = () => {
         </div>
       </div>
       <div className="pb-20 px-40 bg-black">
-        <h2 className="text-white text-xl uppercase font-lato-bold mb-5">
-          Top Rated Movies
-        </h2>
+        <CategoryFilm>Top Rated Movies</CategoryFilm>
         <div className="grid grid-cols-5 gap-5">
           {/* Movie cards go here */}
           {topMovies.slice(0, 10).map((movie) => (

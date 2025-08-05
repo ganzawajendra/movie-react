@@ -1,12 +1,38 @@
 import React from "react";
 import Button from "../Button";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { IoIosSearch } from "react-icons/io";
 import { BsPersonSquare } from "react-icons/bs";
 import { IoMdArrowDropdown } from "react-icons/io";
 
 const Navbar = () => {
   const sessionId = localStorage.getItem("session_id");
+  const locationURL = useLocation().pathname;
+
+  const currentPath = (q) => {
+    if (locationURL === q ){
+      return "font-lato-bold text-white"
+    }
+  }
+
+  const url = [
+    {
+      name : "Beranda",
+      path : "/beranda"
+    },
+    {
+      name : "Film",
+      path : "/film"
+    },
+    {
+      name : "Acara TV",
+      path : "/acara-tv"
+    },
+    {
+      name : "Baru & Populer",
+      path : "/baru-populer"
+    }
+  ]
   return (
     <>
       {sessionId ? (
@@ -16,18 +42,13 @@ const Navbar = () => {
               <img src="./img/logoFull.png" alt="Moflix" className="w-25" />
             </Link>
             <ul className="flex items-center gap-5">
-              <li>
-                <Link>Beranda</Link>
-              </li>
-              <li>
-                <Link>Acara TV</Link>
-              </li>
-              <li>
-                <Link>Film</Link>
-              </li>
-              <li>
-                <Link>Baru & Populer</Link>
-              </li>
+              {url.map((item, index) => (
+                <li key={index}>
+                  <Link to={item.path} className={`${currentPath(item.path)} text-gray-300`}>
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="flex items-center gap-5">
@@ -48,15 +69,23 @@ const Navbar = () => {
         </nav>
       ) : (
         <nav className="fixed w-full backdrop-blur-[2px] top-0 text-white h-15 px-40 flex justify-between items-center z-100">
-          <Link to="/">
-            <img src="./img/logoMerah.png" alt="Moflix" className="h-6" />
-          </Link>
-          <Button
-            navlink="/login"
-            style="bg-manual-red text-manual-white button"
-          >
-            Login
-          </Button>
+          {locationURL === "/login" || locationURL === "/register" ? (
+            <Link to="/">
+              <img src="./img/logoFull.png" alt="Moflix" className="w-25" />
+            </Link>
+          ) : (
+            <>
+              <Link to="/">
+                <img src="./img/logoMerah.png" alt="Moflix" className="h-6" />
+              </Link>
+              <Button
+                navlink="/login"
+                style="bg-manual-red text-manual-white button"
+              >
+                Login
+              </Button>
+            </>
+          )}
         </nav>
       )}
     </>
