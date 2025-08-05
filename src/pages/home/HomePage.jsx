@@ -3,11 +3,14 @@ import Navbar from "../../components/fragments/Navbar";
 import PosterSection from "./components/PosterSection";
 import HomeMovieCard from "./components/HomeMovieCard";
 import { getMovieFromCountry, getTrendingMovies } from "../../api/getMovies";
-import CategoryFilm from "../../components/fragments/CategoryFilm";
+import CategorySection from "../../components/fragments/CategorySection";
+import { getTopTv } from "../../api/getTv";
+import HomeTvCard from "./components/HomeTvCard";
 
 const HomePage = () => {
   const [trendingMovies, setTrendingMovies] = useState();
   const [indonesianMovie, setIndonesianMovie] = useState();
+  const [topTv, setTopTv] = useState();
 
   useEffect(() => {
     // getTrendingMovies().then((data) => {
@@ -16,11 +19,15 @@ const HomePage = () => {
     getMovieFromCountry("id", "id-ID").then((data) => {
       setIndonesianMovie(data);
     });
+
+    getTopTv().then((data) => {
+      setTopTv(data);
+    });
   }, []);
 
-  console.log(indonesianMovie);
+  console.log(topTv);
 
-  if (!indonesianMovie)
+  if (!indonesianMovie || !topTv)
     return (
       <div className="w-full h-screen flex items-center justify-center bg-manual-dark text-white absolute">
         Loading...
@@ -35,10 +42,10 @@ const HomePage = () => {
             <PosterSection />
           </div>
         </div>
-        <div className="px-40 bg-manual-dark">
+        <div className="px-40 bg-manual-dark flex flex-col gap-10 pb-20">
           {/* Content 1 */}
           <div>
-            <CategoryFilm>Film Indonesia</CategoryFilm>
+            <CategorySection>Film Indonesia</CategorySection>
             <div className="overflow-x-auto scrollbar-hide">
               <div className="grid grid-flow-col auto-cols-max gap-5 ">
                 {indonesianMovie.slice(0, 10).map((movie, item) => (
@@ -52,11 +59,19 @@ const HomePage = () => {
             </div>
           </div>
           {/* Content 2 */}
-          <div className="bg-amber-300">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque
-            veritatis quis, ducimus ratione id harum consectetur quam facilis
-            distinctio? Eius, quas dignissimos. Recusandae, ipsam soluta.
-            Dolorum architecto doloribus illum odio?
+          <div>
+            <CategorySection>Acara TV Terbaik</CategorySection>
+            <div className="overflow-x-auto scrollbar-hide">
+              <div className="grid grid-flow-col auto-cols-max gap-5 ">
+                {topTv.slice(0, 10).map((tv, item) => (
+                  <HomeTvCard
+                    key={item}
+                    src={tv.backdrop_path}
+                    name={tv.name}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

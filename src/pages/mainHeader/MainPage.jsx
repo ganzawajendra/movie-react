@@ -11,14 +11,14 @@ import { PiBinocularsFill } from "react-icons/pi";
 import CardReason from "./component/CardReason";
 import Footer from "../../components/fragments/Footer";
 import { useNavigate } from "react-router";
-import CategoryFilm from "../../components/fragments/CategoryFilm";
+import CategorySection from "../../components/fragments/CategorySection";
 
 const HomePage = () => {
   const navigate = useNavigate();
   const [topMovies, setTopMovies] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
-  
+
   const reason = [
     {
       title: "Akses ke Film Terbaru",
@@ -58,67 +58,67 @@ const HomePage = () => {
 
   return (
     <>
-    <div className="z-10 relative">
-      <Navbar />
-      <div className="bg-image h-screen flex items-center justify-center relative">
-        <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-black/70"></div>
-        <div className="absolute bottom-0 z-20 left-0 w-full h-3/4 bg-gradient-to-t from-black/100"></div>
-        <div className="relative z-20 flex flex-col items-center">
-          <h1 className="text-white text-5xl font-montserrat-thin ">
-            Welcome to Moflix
-          </h1>
-          <p className="text-white text-2xl font-lato tracking-wide">
-            Cari Info Film, Acara TV, dan Film Terbaru
-          </p>
-          <Button
-            navlink="/register"
-            style="bg-manual-red text-manual-white mt-7 button"
-          >
-            Daftar Sekarang
-          </Button>
-        </div>
-      </div>
-      <div className="pb-20 px-40 bg-black">
-        <CategoryFilm>Top Rated Movies</CategoryFilm>
-        <div className="grid grid-cols-5 gap-5">
-          {/* Movie cards go here */}
-          {topMovies.slice(0, 10).map((movie) => (
-            <CardMovie
-              key={movie.id}
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}.jpg`}
-              name={movie.title}
-              id={movie.id}
-              onClick={handleOpenModal} // 👉 kirim handler dari sini
+      <div className="z-10 relative">
+        <Navbar />
+        <div className="bg-image h-screen flex items-center justify-center relative">
+          <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-black/70"></div>
+          <div className="absolute bottom-0 z-20 left-0 w-full h-3/4 bg-gradient-to-t from-black/100"></div>
+          <div className="relative z-20 flex flex-col items-center">
+            <h1 className="text-white text-5xl font-montserrat-thin ">
+              Welcome to Moflix
+            </h1>
+            <p className="text-white text-2xl font-lato tracking-wide">
+              Cari Info Film, Acara TV, dan Film Terbaru
+            </p>
+            <Button
+              navlink="/register"
+              style="bg-manual-red text-manual-white mt-7 button"
             >
-              {movie.title}
-            </CardMovie>
-          ))}
+              Daftar Sekarang
+            </Button>
+          </div>
+        </div>
+        <div className="pb-20 px-40 bg-black">
+          <CategorySection>Top Rated Movies</CategorySection>
+          <div className="grid grid-cols-5 gap-5">
+            {/* Movie cards go here */}
+            {topMovies.slice(0, 10).map((movie) => (
+              <CardMovie
+                key={movie.id}
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}.jpg`}
+                name={movie.title}
+                id={movie.id}
+                onClick={handleOpenModal} // 👉 kirim handler dari sini
+              >
+                {movie.title}
+              </CardMovie>
+            ))}
 
-          <Modal
-            id={selectedId}
-            open={modalOpen}
-            onClose={() => setModalOpen(false)}
-          />
-        </div>
-      </div>
-      <div className="pb-20 px-40 bg-black relative">
-        <h2 className="text-white text-xl uppercase font-lato-bold mb-5">
-          Alasan Lainnya untuk Bergabung
-        </h2>
-        <div className="grid grid-cols-4 gap-5">
-          {reason.map((item, index) => (
-            <CardReason
-              key={index}
-              title={item.title}
-              description={item.description}
-              icon={item.icon}
+            <Modal
+              id={selectedId}
+              open={modalOpen}
+              onClose={() => setModalOpen(false)}
             />
-          ))}
+          </div>
         </div>
-      </div>
+        <div className="pb-20 px-40 bg-black relative">
+          <h2 className="text-white text-xl uppercase font-lato-bold mb-5">
+            Alasan Lainnya untuk Bergabung
+          </h2>
+          <div className="grid grid-cols-4 gap-5">
+            {reason.map((item, index) => (
+              <CardReason
+                key={index}
+                title={item.title}
+                description={item.description}
+                icon={item.icon}
+              />
+            ))}
+          </div>
+        </div>
       </div>
       {/* Footer */}
-      <Footer sticky/>
+      <Footer sticky />
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 
-const CategoryFilm = ({children}) => {
+const CategorySection = ({children}) => {
   return (
     <h2 className="text-white text-xl uppercase font-lato-bold mb-5">
       {children}
@@ -8,4 +8,4 @@ const CategoryFilm = ({children}) => {
   );
 };
 
-export default CategoryFilm;
+export default CategorySection;
