@@ -22,40 +22,45 @@ const HomePage = () => {
   const [popularMovies, setPopularMovies] = useState();
   const [topTv, setTopTv] = useState();
 
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+
   useEffect(() => {
-    getTrendingMovies().then((data) => {
-      setTrendingMovies(data);
-    });
-
-    getMovieFromCountry("id", "id-ID").then((data) => {
-      setIndonesianMovies(data);
-    });
-
-    getTopTv().then((data) => {
-      setTopTv(data);
-    });
-
-    getTrendingTv().then((data) => {
-      setTrendingTv(data);
-    });
-
-    getPopularMovies().then((data) => {
-      setPopularMovies(data);
+    Promise.all([
+      getTrendingMovies(),
+      getMovieFromCountry("id", "id-ID"),
+      getTopTv(),
+      getTrendingTv(),
+      getPopularMovies(),
+    ])
+    .then(([trendingMovies, indonesianMovies, topTv, trendingTv, popularMovies]) => {
+      setTrendingMovies(trendingMovies);
+      setIndonesianMovies(indonesianMovies);
+      setTopTv(topTv);
+      setTrendingTv(trendingTv);
+      setPopularMovies(popularMovies);
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+      setIsError(true);
+    })
+    .finally(() => {
+      setIsLoading(false);
     });
   }, []);
 
-  if (
-    !indonesianMovies ||
-    !topTv ||
-    !trendingMovies ||
-    !trendingTv ||
-    !popularMovies
+  if(isLoading) return (
+    <div className="w-full h-screen flex items-center justify-center bg-manual-dark text-white absolute">
+      Loading...
+    </div>
   )
-    return (
-      <div className="w-full h-screen flex items-center justify-center bg-manual-dark text-white absolute">
-        Loading...
-      </div>
-    );
+
+  if(isError) return (
+    <div className="w-full h-screen flex items-center justify-center bg-manual-dark text-white absolute">
+      Error
+    </div>
+  )
+
   return (
     <>
       <div className="relative z-10">
