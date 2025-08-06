@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/fragments/Navbar";
 import PosterSection from "./components/PosterSection";
-import HomeMovieCard from "../../components/fragments/Card/MovieCard";
+import MovieCard from "../../components/fragments/Card/MovieCard";
 import {
   getMovieFromCountry,
   getPopularMovies,
   getTrendingMovies,
 } from "../../api/getMovies";
-import CategorySection from "../../components/fragments/CategorySection";
 import { getTopTv, getTrendingTv } from "../../api/getTv";
 import HomeTvCard from "../../components/fragments/Card/TvCard";
 import Footer from "../../components/fragments/Footer";
-import { IoIosArrowForward } from "react-icons/io";
-import { Link } from "react-router";
 import CardSlider from "./components/CardSlider";
 
 const HomePage = () => {
@@ -73,7 +70,7 @@ const HomePage = () => {
             {/* Content 1 */}
             <CardSlider linkTo="film" category="Film Indonesia">
               {indonesianMovies.slice(0, 10).map((movie, item) => (
-                <HomeMovieCard
+                <MovieCard
                   key={item}
                   src={movie.poster_path}
                   title={movie.title}
@@ -89,7 +86,7 @@ const HomePage = () => {
             {/* Content 3 */}
             <CardSlider linkTo="film" category="Film Trending">
               {trendingMovies.slice(0, 10).map((movie, item) => (
-                <HomeMovieCard
+                <MovieCard
                   key={item}
                   src={movie.poster_path}
                   title={movie.title}
@@ -109,7 +106,7 @@ const HomePage = () => {
             {/* Content 5 */}
             <CardSlider linkTo="film" category="Film Populer">
               {popularMovies.slice(0, 10).map((movie, item) => (
-                <HomeMovieCard
+                <MovieCard
                   key={item}
                   src={movie.poster_path}
                   title={movie.title}
