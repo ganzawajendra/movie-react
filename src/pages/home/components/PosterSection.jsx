@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getPopularMovies, getTrendingMovies } from "../../../api/getMovies";
 import Button from "../../../components/fragments/Button";
 import { IoIosArrowForward } from "react-icons/io";
-import HomeMovieCard from "./HomeMovieCard";
+import HomeMovieCard from "../../../components/fragments/Card/MovieCard";
 
 const PosterSection = () => {
   const [popularMovies, setPopularMovies] = useState();
@@ -21,13 +21,18 @@ const PosterSection = () => {
     });
   }, []);
 
-  if (!popularMovies) return <div className="w-full h-screen flex items-center justify-center bg-manual-dark text-white absolute">Loading...</div>;
+  if (!popularMovies)
+    return (
+      <div className="w-full h-screen flex items-center justify-center bg-manual-dark text-white absolute">
+        Loading...
+      </div>
+    );
 
   return (
     <>
       <div className="flex flex-col">
         {popularMovies.slice(nextSlide, nextSlide + 1).map((movie) => (
-          <div key={movie.id} className="relative min-w-screen">
+          <div key={movie.id} className="relative w-full">
             <img
               src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
               alt={movie.title}
@@ -46,7 +51,6 @@ const PosterSection = () => {
                     Film No. {nextSlide + 1} Terpopuler
                   </p>
                 </div>
-                
               </div>
               <div className="w-1/2">
                 <h1 className="text-white font-montserrat text-4xl my-5">
@@ -68,15 +72,15 @@ const PosterSection = () => {
               </div>
             </div>
             <div className="absolute flex justify-end right-40 top-1/2 transform -translate-y-1/2">
-                  <button
-                    className="bg-manual-red p-1 rounded-full size-8 cursor-pointer flex justify-center items-center"
-                    onClick={handleNextSlide}
-                  >
-                    <p className="text-white text-xl">
-                      <IoIosArrowForward />
-                    </p>
-                  </button>
-                </div>
+              <button
+                className="bg-manual-red p-1 rounded-full size-8 cursor-pointer flex justify-center items-center"
+                onClick={handleNextSlide}
+              >
+                <p className="text-white text-xl">
+                  <IoIosArrowForward />
+                </p>
+              </button>
+            </div>
           </div>
         ))}
       </div>

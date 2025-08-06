@@ -15,7 +15,7 @@ const CardSlider = ({category, linkTo, children}) => {
           </p>
         </Link>
       </div>
-      <div className="overflow-x-auto scrollbar-hide">
+      <div className="overflow-x-auto scrollbar-hide no-scrollbar">
         <div className="grid grid-flow-col auto-cols-max gap-5 ">
           {children}
         </div>

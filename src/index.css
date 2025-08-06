@@ -1,4 +1,13 @@
 @import "tailwindcss";
+
+*{
+    /* border : 1px red solid */
+}
+
+.no-scrollbar::-webkit-scrollbar { 
+    display: none; 
+}
+
 @font-face{
     font-family : "Lato";
     src: url("./assets/fonts/Lato-Regular.ttf") format("truetype");
