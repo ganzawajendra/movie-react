@@ -21,7 +21,6 @@ const PosterSection = () => {
     });
   }, []);
 
-  
   if (!popularMovies) return <div className="w-full h-screen flex items-center justify-center bg-manual-dark text-white absolute">Loading...</div>;
 
   return (

@@ -9,22 +9,26 @@ export const getTopMovies = async () => {
 };
 
 export const getMovieDetails = async (id) => {
-    const response = await axios.get(`${baseUrl}/${id}?api_key=${apiKey}`);
-    return response.data;
-}
+  const response = await axios.get(`${baseUrl}/${id}?api_key=${apiKey}`);
+  return response.data;
+};
 
 export const getPopularMovies = async () => {
-    const response = await axios.get(`${baseUrl}/popular?api_key=${apiKey}`);
-    return response.data.results;
-}
+  const response = await tmdb.get(
+    "/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc"
+  );
+  return response.data.results;
+};
 
 export const getTrendingMovies = async () => {
   const response = await tmdb.get("/trending/movie/week");
-  return response.data.results
-}
+  return response.data.results;
+};
 
 export const getMovieFromCountry = async (id_country, language) => {
-  const region = id_country.toUpperCase()
-  const response = await tmdb.get(`/discover/movie?include_adult=false&include_video=false&language=${language}&page=1&region=${region}&sort_by=popularity.desc&with_origin_country=${region}&with_original_language=${id_country}&year=2025`)
-  return response.data.results
-}
+  const region = id_country.toUpperCase();
+  const response = await tmdb.get(
+    `/discover/movie?include_adult=false&include_video=false&language=${language}&page=1&region=${region}&sort_by=popularity.desc&with_origin_country=${region}&with_original_language=${id_country}&year=2025`
+  );
+  return response.data.results;
+};
