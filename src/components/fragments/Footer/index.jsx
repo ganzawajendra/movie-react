@@ -8,7 +8,7 @@ const Footer = ({sticky = false}) => {
           <div className="flex flex-col items-center justify-center">
             <img src="./img/logoMerah.png" alt="Logo Moflix" className="w-30" />
             <p className="mt-2 font-montserrat-light tracking-wide">
-              Jl. Jend. Sudirman, Jakarta
+              Jl. Lorem, ipsum., Lorem
             </p>
           </div>
           <div className="flex flex-col items-start justify-start">
@@ -21,21 +21,21 @@ const Footer = ({sticky = false}) => {
             <h3 className="text-lg font-lato-bold mb-2">Kontak Kami</h3>
             <p className="text-sm font-montserrat">
               Email:{" "}
-              <span className="font-montserrat-light">moflix@gmail.com</span>
+              <span className="font-montserrat-light">lorem@gmail.com</span>
             </p>
             <p className="text-sm font-montserrat">
               Telepon:{" "}
-              <span className="font-montserrat-light">+123 456 7890</span>
+              <span className="font-montserrat-light">+xxx xxx xxx</span>
             </p>
             <p className="text-sm font-montserrat">
               Instagram:{" "}
-              <span className="font-montserrat-light">@moflix.id</span>
+              <span className="font-montserrat-light">@lorem</span>
             </p>
           </div>
         </div>
       </footer>
       <div className="bg-manual-red text-center py-3">
-        <p className="text-sm text-white font-lato-light">© 2023 Moflix. All rights reserved.</p>
+        <p className="text-sm text-white font-lato-light">© Lorem ipsum dolor sit amet.</p>
       </div>
     </div>
   );
