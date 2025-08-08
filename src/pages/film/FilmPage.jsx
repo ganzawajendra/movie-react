@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "../../components/fragments/Navbar";
 import Footer from "../../components/fragments/Footer";
-import { getMovieFromCountry, getPopularMovies, getTrendingMovies } from "../../api/getMovies";
+import { getMovieFromCountry, getPopularMovies, getTopMovies, getTrendingMovies } from "../../api/getMovies";
 import MovieCard from "../../components/fragments/Card/MovieCard";
 import SectionCard from "./components/SectionCard";
 
@@ -9,6 +9,7 @@ const FilmPage = () => {
   const [trendingMovies, setTrendingMovies] = useState();
   const [indonesianMovies, setIndonesianMovies] = useState();
   const [popularMovies, setPopularMovies] = useState();
+  const [topMovies, setTopMovies] = useState();
 
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -18,11 +19,13 @@ const FilmPage = () => {
       getTrendingMovies(),
       getMovieFromCountry("id", "id-ID"),
       getPopularMovies(),
+      getTopMovies()
     ])
-      .then(([trendingMovies, indonesianMovies, popularMovies]) => {
+      .then(([trendingMovies, indonesianMovies, popularMovies, topMovies]) => {
         setTrendingMovies(trendingMovies);
         setIndonesianMovies(indonesianMovies);
         setPopularMovies(popularMovies);
+        setTopMovies(topMovies);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -77,6 +80,17 @@ const FilmPage = () => {
           {/* Content 3 */}
           <SectionCard content={popularMovies} category={"Film Populer"}>
             {popularMovies.slice(1, -1).map((movie, item) => (
+              <MovieCard
+                key={item}
+                src={movie.poster_path}
+                title={movie.title}
+                style="col-span-1 w-full"
+              />
+            ))}
+          </SectionCard>
+          {/* Content 4 */}
+          <SectionCard content={topMovies} category={"Film Terbaik"}>
+            {topMovies.slice(1, -1).map((movie, item) => (
               <MovieCard
                 key={item}
                 src={movie.poster_path}

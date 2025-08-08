@@ -39,7 +39,7 @@ const SectionCard = ({ content, children, category }) => {
           </div>
           <div className="absolute bottom-10 left-50 right-10">
             <div className="flex flex-col">
-              <h1 className="text-2xl font-montserrat-bold text-white line-clamp-1">
+              <h1 className="text-2xl font-montserrat-bold text-white">
                 {content[0].title}
               </h1>
               <div className="flex items-center gap-2">
