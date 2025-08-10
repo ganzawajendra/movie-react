@@ -63,6 +63,7 @@ const FilmPage = () => {
                 src={movie.poster_path}
                 title={movie.title}
                 style="col-span-1 w-full"
+                filmId={movie.id}
               />
             ))}
           </SectionCard>
@@ -74,6 +75,7 @@ const FilmPage = () => {
                 src={movie.poster_path}
                 title={movie.title}
                 style="col-span-1 w-full"
+                filmId={movie.id}
               />
             ))}
           </SectionCard>
@@ -85,6 +87,7 @@ const FilmPage = () => {
                 src={movie.poster_path}
                 title={movie.title}
                 style="col-span-1 w-full"
+                filmId={movie.id}
               />
             ))}
           </SectionCard>
@@ -96,6 +99,7 @@ const FilmPage = () => {
                 src={movie.poster_path}
                 title={movie.title}
                 style="col-span-1 w-full"
+                filmId={movie.id}
               />
             ))}
           </SectionCard>

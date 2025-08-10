@@ -1,10 +1,12 @@
 import React from "react";
+import { Link } from "react-router";
 
-const MovieCard = ({src, title, style = ""}) => {
+const MovieCard = ({src, title, style = "", filmId}) => {
   const baseImg = import.meta.env.VITE_MOVIE_BASE_IMG_URL;
 
   return (
     <>
+    <Link to={`/film/detail/${filmId}`}>
       <div className={`w-40 flex-shrink-0 ${style} overflow-hidden relative group`}>
           <img 
           src={`${baseImg}/${src}`}
@@ -16,6 +18,7 @@ const MovieCard = ({src, title, style = ""}) => {
           </div>
           <div className="absolute top-0 left-0 w-full h-full bg-black/0 group-hover:bg-black/40 transition-all duration-300"></div>
         </div>
+    </Link>
     </>
   );
 };  

@@ -8,6 +8,7 @@ import RegisterPage from './pages/auth/register/RegisterPage';
 import HomePage from './pages/home/HomePage';
 import AcaraTvPage from './pages/acaraTv/AcaraTvPage';
 import FilmPage from './pages/film/FilmPage';
+import DetailFilm from './pages/detail/film/DetailFilm';
 
 createRoot(document.getElementById('root')).render(
   <Router>
@@ -19,6 +20,7 @@ createRoot(document.getElementById('root')).render(
       <Route path="/beranda" element={<HomePage />} />
       <Route path='/acara-tv' element={<AcaraTvPage />} />
       <Route path='/film' element={<FilmPage />} />
+      <Route path='/film/detail/:filmId' element={<DetailFilm />} />
     </Routes>
   </StrictMode>
   </Router>

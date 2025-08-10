@@ -6,7 +6,7 @@ const Footer = ({sticky = false}) => {
       <footer className="bg-manual-dark text-white text-center px-40 py-10">
         <div className="grid grid-cols-3 gap-10">
           <div className="flex flex-col items-center justify-center">
-            <img src="./img/logoMerah.png" alt="Logo Moflix" className="w-30" />
+            <img src="/img/logoMerah.png" alt="Logo Moflix" className="w-30" />
             <p className="mt-2 font-montserrat-light tracking-wide">
               Jl. Lorem, ipsum., Lorem
             </p>

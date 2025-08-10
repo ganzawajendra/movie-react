@@ -10,7 +10,7 @@ const Navbar = () => {
   const locationURL = useLocation().pathname;
 
   const currentPath = (q) => {
-    if (locationURL === q ){
+    if (locationURL.startsWith(q)){
       return "font-lato-bold text-white"
     }
   }
@@ -39,7 +39,7 @@ const Navbar = () => {
         <nav className="fixed w-full backdrop-blur-[2px] top-0 text-white h-15 px-40 flex justify-between items-center z-100 bg-gradient-to-b from-black/70">
           <div className="flex items-center gap-10">
             <Link to="/">
-              <img src="./img/logoFull.png" alt="Moflix" className="w-25" />
+              <img src="/img/logoFull.png" alt="Moflix" className="w-25" />
             </Link>
             <ul className="flex items-center gap-5">
               {url.map((item, index) => (
