@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import Navbar from "../../components/fragments/Navbar";
 import Footer from "../../components/fragments/Footer";
-import { getMovieFromCountry, getPopularMovies, getTopMovies, getTrendingMovies } from "../../api/getMovies";
+import {
+  getMovieFromCountry,
+  getPopularMovies,
+  getTopMovies,
+  getTrendingMovies,
+} from "../../api/getMovies";
 import MovieCard from "../../components/fragments/Card/MovieCard";
 import SectionCard from "./components/SectionCard";
 
@@ -19,7 +24,7 @@ const FilmPage = () => {
       getTrendingMovies(),
       getMovieFromCountry("id", "id-ID"),
       getPopularMovies(),
-      getTopMovies()
+      getTopMovies(),
     ])
       .then(([trendingMovies, indonesianMovies, popularMovies, topMovies]) => {
         setTrendingMovies(trendingMovies);
@@ -36,19 +41,19 @@ const FilmPage = () => {
       });
   }, []);
 
-  if (isLoading)
+  if (isLoading) {
     return (
       <div className="w-full h-screen flex items-center justify-center bg-manual-dark text-white absolute">
         Loading...
       </div>
     );
-
-  if (isError)
+  } else if (isError) {
     return (
       <div className="w-full h-screen flex items-center justify-center bg-manual-dark text-white absolute">
         Error
       </div>
     );
+  }
 
   return (
     <>

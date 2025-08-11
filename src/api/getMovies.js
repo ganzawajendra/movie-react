@@ -8,7 +8,7 @@ export const getTopMovies = async () => {
   return response.data.results;
 };
 
-export const getMovieDetails = async (id) => {
+export const getDetailMovie = async (id) => {
   const response = await axios.get(`${baseUrl}/${id}?api_key=${apiKey}`);
   return response.data;
 };

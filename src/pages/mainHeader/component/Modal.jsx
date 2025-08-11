@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getMovieDetails } from "../../../api/getMovies";
+import { getDetailMovie } from "../../../api/getMovies";
 
 const Modal = ({ onClose, open, id }) => {
   const [movieDetails, setMovieDetails] = useState(null);
@@ -7,7 +7,7 @@ const Modal = ({ onClose, open, id }) => {
 
   useEffect(() => {
     if (!id) return;
-    getMovieDetails(id).then((data) => {
+    getDetailMovie(id).then((data) => {
       setMovieDetails(data);
     });
   }, [id]);
