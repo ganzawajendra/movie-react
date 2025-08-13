@@ -32,3 +32,8 @@ export const getMovieFromCountry = async (id_country, language) => {
   );
   return response.data.results;
 };
+
+export const getCreditsMovie = async (id) => {
+  const response = await tmdb.get(`/movie/${id}/credits`);
+  return response.data;
+}

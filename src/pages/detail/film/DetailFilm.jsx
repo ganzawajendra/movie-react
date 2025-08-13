@@ -5,8 +5,6 @@ import Footer from "../../../components/fragments/Footer";
 import ButtonBack from "../../../components/fragments/ButtonBack";
 import { getDetailMovie } from "../../../api/getMovies";
 import { FaStar } from "react-icons/fa";
-import { FaCirclePlay } from "react-icons/fa6";
-import { TbTimeDuration30 } from "react-icons/tb";
 import DetailLayout from "./component/DetailLayout";
 
 const DetailFilm = () => {
@@ -16,6 +14,7 @@ const DetailFilm = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
+  const baseOriginalImg = import.meta.env.VITE_MOVIE_BASE_IMG_URL_ORIGINAL;
   const baseImg = import.meta.env.VITE_MOVIE_BASE_IMG_URL;
 
   const formatDuration = (time) => {
@@ -65,7 +64,7 @@ const DetailFilm = () => {
 
               {/* Background Image */}
               <img
-                src={`${baseImg}/${filmDetails.backdrop_path}`}
+                src={`${baseOriginalImg}/${filmDetails.backdrop_path}`}
                 alt={filmDetails.title}
                 className="object-cover w-full"
               />
@@ -73,7 +72,7 @@ const DetailFilm = () => {
             </div>
 
             {/* Content Movie */}
-            <div className="absolute top-70 px-10 w-full">
+            <div className="relative -top-20 px-10 w-full">
               <div className="flex gap-3">
 
                 {/* Poster Movie */}
@@ -112,7 +111,7 @@ const DetailFilm = () => {
                   </div>
 
                   {/* Details Movie Additional */}
-                  <DetailLayout filmDetails={filmDetails}></DetailLayout>
+                  <DetailLayout filmDetails={filmDetails} id={filmId}></DetailLayout>
                 </div>
               </div>
             </div>

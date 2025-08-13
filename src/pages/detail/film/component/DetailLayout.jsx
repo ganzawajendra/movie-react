@@ -5,12 +5,12 @@ import TrailerDetails from "./ContentDetails/TrailerDetails";
 import CastDetails from "./ContentDetails/CastDetails";
 import MoreLikeThisDetails from "./ContentDetails/MoreLikeThisDetails";
 
-const DetailLayout = ({filmDetails}) => {
+const DetailLayout = ({filmDetails, id}) => {
     const [content, setContent] = useState("overview");
     const renderContent = () => {
         switch (content) {
             case "overview":
-                return <OverviewDetails filmDetails={filmDetails} />;
+                return <OverviewDetails filmDetails={filmDetails} id={id}/>;
             case "trailer":
                 return <TrailerDetails filmDetails={filmDetails} />;
             case "cast":
