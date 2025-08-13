@@ -63,7 +63,8 @@ const HomePage = () => {
         <Navbar />
         <div className="bg-image h-screen flex items-center justify-center relative">
           <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-black/70"></div>
-          <div className="absolute bottom-0 z-20 left-0 w-full h-3/4 bg-gradient-to-t from-black/100"></div>
+          <div className="absolute top-0 left-0 w-full h-full bg-black/50"></div>
+          <div className="card-transition-gradient"></div>
           <div className="relative z-20 flex flex-col items-center">
             <h1 className="text-white text-5xl font-montserrat-thin ">
               Welcome to Moflix
@@ -79,7 +80,7 @@ const HomePage = () => {
             </Button>
           </div>
         </div>
-        <div className="pb-20 px-40 bg-black">
+        <div className="pb-20 px-40 bg-manual-dark">
           <CategorySection>Top Rated Movies</CategorySection>
           <div className="grid grid-cols-5 gap-5">
             {/* Movie cards go here */}
@@ -102,7 +103,7 @@ const HomePage = () => {
             />
           </div>
         </div>
-        <div className="pb-20 px-40 bg-black relative">
+        <div className="pb-20 px-40 bg-manual-dark relative">
           <h2 className="text-white text-xl uppercase font-lato-bold mb-5">
             Alasan Lainnya untuk Bergabung
           </h2>
