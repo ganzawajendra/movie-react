@@ -14,7 +14,8 @@ import { useNavigate } from "react-router";
 import CategorySection from "../../components/fragments/CategorySection";
 
 const HomePage = () => {
-  const navigate = useNavigate();
+  const baseImg = import.meta.env.VITE_MOVIE_BASE_IMG_URL;
+  const baseOriginalImg = import.meta.env.VITE_MOVIE_BASE_IMG_URL_ORIGINAL;
   const [topMovies, setTopMovies] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -85,7 +86,7 @@ const HomePage = () => {
             {topMovies.slice(0, 10).map((movie) => (
               <CardMovie
                 key={movie.id}
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}.jpg`}
+                src={`${baseImg}${movie.poster_path}`}
                 name={movie.title}
                 id={movie.id}
                 onClick={handleOpenModal} // 👉 kirim handler dari sini

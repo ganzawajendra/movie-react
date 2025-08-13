@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { getPopularMovies, getTrendingMovies } from "../../../api/getMovies";
 import Button from "../../../components/fragments/Button";
 import { IoIosArrowForward } from "react-icons/io";
-import HomeMovieCard from "../../../components/fragments/Card/MovieCard";
 
 const PosterSection = () => {
   const [popularMovies, setPopularMovies] = useState();
   const [nextSlide, setNextSlide] = useState(0);
+  const baseOriginalImg = import.meta.env.VITE_MOVIE_BASE_IMG_URL_ORIGINAL;
 
   const handleNextSlide = () => {
     setNextSlide(nextSlide + 1);
@@ -34,7 +34,7 @@ const PosterSection = () => {
         {popularMovies.slice(nextSlide, nextSlide + 1).map((movie) => (
           <div key={movie.id} className="relative w-full">
             <img
-              src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+              src={`${baseOriginalImg}${movie.backdrop_path}`}
               alt={movie.title}
               className="w-full h-screen object-cover"
             />

@@ -3,7 +3,8 @@ import { getDetailMovie } from "../../../api/getMovies";
 
 const Modal = ({ onClose, open, id }) => {
   const [movieDetails, setMovieDetails] = useState(null);
-  const baseUrl = import.meta.env.VITE_MOVIE_BASE_IMG_URL;
+  const baseImg = import.meta.env.VITE_MOVIE_BASE_IMG_URL;
+  const baseOriginalImg = import.meta.env.VITE_MOVIE_BASE_IMG_URL_ORIGINAL;
 
   useEffect(() => {
     if (!id) return;
@@ -36,14 +37,14 @@ const Modal = ({ onClose, open, id }) => {
           <>
             <div className="relative">
               <img
-                src={`${baseUrl}${movieDetails.backdrop_path}`}
+                src={`${baseOriginalImg}${movieDetails.backdrop_path}`}
                 alt={movieDetails.title}
                 className="w-full h-90 object-cover"
               />
               <div className="card-detail-gradient"></div>
               <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/70"></div>
               <img
-                src={`${baseUrl}${movieDetails.poster_path}`}
+                src={`${baseImg}${movieDetails.poster_path}`}
                 alt={movieDetails.title}
                 className="absolute top-10 left-10 w-40 rounded"
               />

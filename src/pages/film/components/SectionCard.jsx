@@ -4,6 +4,7 @@ import CategorySection from "../../../components/fragments/CategorySection";
 
 const SectionCard = ({ content, children, category }) => {
   const baseImg = import.meta.env.VITE_MOVIE_BASE_IMG_URL;
+  const baseOriginalImg = import.meta.env.VITE_MOVIE_BASE_IMG_URL_ORIGINAL;
   const [overviewExpanded, setOverviewExpanded] = useState(false);
   const [height, setHeight] = useState("4.5rem");
   const contentRef = useRef(null);
@@ -24,7 +25,7 @@ const SectionCard = ({ content, children, category }) => {
           className="col-span-3 row-span-2 w-full relative"
         >
           <img
-            src={`${baseImg}/${content[0].backdrop_path}`}
+            src={`${baseOriginalImg}/${content[0].backdrop_path}`}
             alt={content[0].title}
             className="w-full h-full object-cover"
           />
