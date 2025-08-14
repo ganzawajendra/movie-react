@@ -77,7 +77,7 @@ const DetailFilm = () => {
                 <img
                   src={`${baseImg}/${filmDetails.poster_path}`}
                   alt={filmDetails.title}
-                  className="w-90"
+                  className="w-90 object-contain object-top"
                 />
 
                 {/* Details Movie */}
