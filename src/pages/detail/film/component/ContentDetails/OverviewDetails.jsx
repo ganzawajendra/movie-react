@@ -14,7 +14,7 @@ const OverviewDetails = ({ filmDetails, id }) => {
     getCreditsMovie(filmId)
       .then((data) => {
         setCast(data.cast);
-        setWriter(data.crew.filter((member) => member.job === "Writer"));
+        setWriter(data.crew.filter((member) => member.job === "Writer" || member.job === "Story" || member.job === "Adaptation"));
         setIsLoading(false);
       })
       .catch((error) => {
@@ -36,8 +36,6 @@ const OverviewDetails = ({ filmDetails, id }) => {
       </div>
     );
   }
-
-  console.table(writer);
 
   return (
     <div className="px-3">

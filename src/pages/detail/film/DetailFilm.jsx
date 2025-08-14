@@ -51,8 +51,6 @@ const DetailFilm = () => {
     );
   }
 
-  console.log(filmDetails);
-
   return (
     <>
       <div className="relative z-10">

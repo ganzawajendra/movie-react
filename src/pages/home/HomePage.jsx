@@ -74,6 +74,7 @@ const HomePage = () => {
                   key={item}
                   src={movie.poster_path}
                   title={movie.title}
+                  filmId={movie.id}
                 />
               ))}
             </CardSlider>
@@ -90,6 +91,7 @@ const HomePage = () => {
                   key={item}
                   src={movie.poster_path}
                   title={movie.title}
+                  filmId={movie.id}
                 />
               ))}
             </CardSlider>
@@ -110,6 +112,7 @@ const HomePage = () => {
                   key={item}
                   src={movie.poster_path}
                   title={movie.title}
+                  filmId={movie.id}
                 />
               ))}
             </CardSlider>
