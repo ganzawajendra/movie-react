@@ -38,7 +38,7 @@ const DetailLayout = ({filmDetails, id}) => {
             <h1 className="text-white font-montserrat">Details</h1>
         </button>
       </div>
-      <div className="py-5">
+      <div className="py-5 min-h-max max-h-[35rem] overflow-y-auto scrollbar-hide no-scrollbar">
         {renderContent()}
       </div>
     </div>
