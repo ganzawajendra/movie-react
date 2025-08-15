@@ -1,6 +1,7 @@
 import React from 'react'
 
-const CastDetails = () => {
+const CastDetails = ({filmDetails, id}) => {
+  console.log(filmDetails);
   return (
     <div>CastDetails</div>
   )
