@@ -25,13 +25,13 @@ const OverviewDetails = ({ filmDetails, id }) => {
 
   if (isLoading) {
     return (
-      <div className="w-full h-screen flex items-center justify-center bg-manual-dark text-white absolute">
+      <div className="w-full flex items-center justify-center bg-manual-dark text-white">
         Loading...
       </div>
     );
   } else if (isError) {
     return (
-      <div className="w-full h-screen flex items-center justify-center bg-manual-dark text-white absolute">
+      <div className="w-full flex items-center justify-center bg-manual-dark text-white">
         Error
       </div>
     );

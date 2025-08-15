@@ -37,3 +37,8 @@ export const getCreditsMovie = async (id) => {
   const response = await tmdb.get(`/movie/${id}/credits`);
   return response.data;
 }
+
+export const getSimilarMovies = async (id) => {
+  const response = await tmdb.get(`/movie/${id}/similar`);
+  return response.data.results;
+};

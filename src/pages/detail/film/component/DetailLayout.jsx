@@ -16,7 +16,7 @@ const DetailLayout = ({filmDetails, id}) => {
             case "cast":
                 return <CastDetails filmDetails={filmDetails} />;
             case "moreLikeThis":
-                return <MoreLikeThisDetails filmDetails={filmDetails} />;
+                return <MoreLikeThisDetails id={id} />;
             default:
                 return null;
         }
