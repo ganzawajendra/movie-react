@@ -35,7 +35,7 @@ const DetailLayout = ({filmDetails, id}) => {
             <h1 className="text-white font-montserrat">More Like This</h1>
         </button>
         <button className={`cursor-pointer py-1 px-3 border-b-3 ${content === "cast" ? "border-red-500" : "border-black"} w-full`} onClick={() => setContent("cast")}>
-            <h1 className="text-white font-montserrat">Details</h1>
+            <h1 className="text-white font-montserrat">Cast</h1>
         </button>
       </div>
       <div className="py-5 min-h-max max-h-[35rem] overflow-y-auto scrollbar-hide no-scrollbar">
