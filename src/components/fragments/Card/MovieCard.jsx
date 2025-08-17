@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router";
 
-const MovieCard = ({src, title, style = "", filmId}) => {
+const MovieCard = ({src, title, style = "", filmId, width = "w-full"}) => {
   const baseImg = import.meta.env.VITE_MOVIE_BASE_IMG_URL;
 
   return (
     <>
     <Link to={`/film/detail/${filmId}`}>
-      <div className={`w-full flex-shrink-0 ${style} overflow-hidden relative group`}>
+      <div className={`${width} flex-shrink-0 ${style} overflow-hidden relative group`}>
           <img 
           src={`${baseImg}/${src}`}
           alt={title}

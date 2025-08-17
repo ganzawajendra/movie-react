@@ -75,6 +75,7 @@ const HomePage = () => {
                   src={movie.poster_path}
                   title={movie.title}
                   filmId={movie.id}
+                  width = "w-40"
                 />
               ))}
             </CardSlider>
@@ -92,6 +93,7 @@ const HomePage = () => {
                   src={movie.poster_path}
                   title={movie.title}
                   filmId={movie.id}
+                  width = "w-40"
                 />
               ))}
             </CardSlider>
@@ -113,6 +115,7 @@ const HomePage = () => {
                   src={movie.poster_path}
                   title={movie.title}
                   filmId={movie.id}
+                  width = "w-40"
                 />
               ))}
             </CardSlider>
