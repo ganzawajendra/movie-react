@@ -5,11 +5,7 @@ const CastCard = ({ listCast }) => {
   return (
     <div className="flex flex-col gap-10">
       <div className="grid grid-cols-2 gap-4">
-        <div className="col-span-2">
-          <h1 className="text-white max-w-max px-2 font-lato border-b-3 border-red-500">
-            Top Cast
-          </h1>
-        </div>
+        
         {listCast &&
           listCast.map((cast) => (
             <div key={cast.id} className="flex gap-2">

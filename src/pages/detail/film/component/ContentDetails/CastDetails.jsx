@@ -16,6 +16,11 @@ const CastDetails = ({filmDetails, id}) => {
 
   return (
     <div>
+      <div className="mb-4">
+          <h1 className="text-white max-w-max px-2 font-lato border-b-3 border-red-500">
+            Top Cast
+          </h1>
+        </div>
       <CastCard listCast={cast} />
     </div>
   )
