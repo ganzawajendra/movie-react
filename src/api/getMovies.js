@@ -42,3 +42,8 @@ export const getSimilarMovies = async (id) => {
   const response = await tmdb.get(`/movie/${id}/similar`);
   return response.data.results;
 };
+
+export const getVideosMovie = async (id) => {
+  const response = await tmdb.get(`/movie/${id}/videos`);
+  return response.data.results;
+};
