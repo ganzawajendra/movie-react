@@ -68,7 +68,7 @@ const HomePage = () => {
           <div className="relative z-20 flex flex-col items-center">
             <h1 className="text-white text-5xl font-montserrat-thin transition-all duration-300
             lg:text-5xl
-            md:text-3xl">
+            md:text-4xl">
               Welcome to Moflix
             </h1>
             <p className="text-white text-2xl font-lato tracking-wide transition-all duration-300
@@ -117,7 +117,9 @@ const HomePage = () => {
           <CategorySection>
             Alasan Untuk Bergabung
           </CategorySection>
-          <div className="grid grid-cols-4 gap-5">
+          <div className="grid gap-5 transition-all duration-300
+          lg:grid-cols-4
+          md:grid-cols-2">
             {reason.map((item, index) => (
               <CardReason
                 key={index}

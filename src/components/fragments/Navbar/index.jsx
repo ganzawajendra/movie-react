@@ -36,7 +36,9 @@ const Navbar = () => {
   return (
     <>
       {sessionId ? (
-        <nav className="fixed w-full backdrop-blur-[2px] top-0 text-white h-15 px-40 flex justify-between items-center z-100 bg-gradient-to-b from-black/70">
+        <nav className="fixed w-full backdrop-blur-[2px] top-0 text-white h-15 flex justify-between items-center z-100 bg-gradient-to-b from-black/70 transition-all duration-300
+        lg:px-40
+        md:px-20">
           <div className="flex items-center gap-10">
             <Link to="/">
               <img src="/img/logoFull.png" alt="Moflix" className="w-25" />
@@ -44,7 +46,7 @@ const Navbar = () => {
             <ul className="flex items-center gap-5">
               {url.map((item, index) => (
                 <li key={index}>
-                  <Link to={item.path} className={`${currentPath(item.path)} text-gray-300`}>
+                  <Link to={item.path} className={`${currentPath(item.path)} text-md text-gray-300 transition-all duration-300`}>
                     {item.name}
                   </Link>
                 </li>

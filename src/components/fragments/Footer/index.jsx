@@ -57,7 +57,9 @@ const Footer = ({sticky = false}) => {
         </div>
       </footer>
       <div className="bg-manual-red text-center py-3">
-        <p className="text-sm text-white font-lato-light">© Lorem ipsum dolor sit amet.</p>
+        <p className="text-sm text-white font-lato-light transition-all duration-300
+        lg:text-sm
+        md:text-sm">© Lorem ipsum dolor sit amet.</p>
       </div>
     </div>
   );
