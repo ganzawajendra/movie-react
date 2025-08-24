@@ -68,13 +68,15 @@ const HomePage = () => {
             <h1 className="text-white text-5xl font-montserrat-thin transition-all duration-300
             lg:text-5xl
             md:text-4xl
-            sm:text-3xl">
+            sm:text-3xl
+            max-sm:text-xl">
               Welcome to Moflix
             </h1>
             <p className="text-white text-2xl font-lato tracking-wide transition-all duration-300
             lg:text-2xl
             md:text-lg
-            sm:text-sm">
+            sm:text-sm
+            max-sm:text-xs">
               Cari Info Film, Acara TV, dan Film Terbaru
             </p>
             <Button
@@ -88,12 +90,14 @@ const HomePage = () => {
         <div className="pb-20 bg-manual-dark transition-all duration-300
         lg:px-40
         md:px-20
-        sm:px-10">
+        sm:px-10
+        max-sm:px-5">
           <CategorySection>Top Rated Movies</CategorySection>
           <div className="grid grid-cols-5 gap-5 transition-all duration-300
           lg:grid-cols-5
           md:grid-cols-4
-          sm:grid-cols-3">
+          sm:grid-cols-3
+          max-sm:grid-cols-2">
             {/* Movie cards go here */}
             {topMovies.slice(0, 10).map((movie) => (
               <CardMovie
@@ -117,7 +121,8 @@ const HomePage = () => {
         <div className="pb-20 bg-manual-dark relative transition-all duration-300
         lg:px-40
         md:px-20
-        sm:px-10">
+        sm:px-10
+        max-sm:px-5">
           <CategorySection>
             Alasan Untuk Bergabung
           </CategorySection>

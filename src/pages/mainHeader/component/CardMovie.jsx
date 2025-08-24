@@ -15,7 +15,8 @@ const CardMovie = ({ src, name, id, children, onClick }) => {
         <h3 className="text-white font-montserrat transform translate-y-8 opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 z-10 line-clamp-1
         lg:text-xl
         md:text-md
-        sm:text-sm">
+        sm:text-sm
+        max-sm:text-xs">
           {children || name}
         </h3>
       </div>

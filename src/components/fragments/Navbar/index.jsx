@@ -39,7 +39,8 @@ const Navbar = () => {
         <nav className="fixed w-full backdrop-blur-[2px] top-0 text-white h-15 flex justify-between items-center z-100 bg-gradient-to-b from-black/70 transition-all duration-300
         lg:px-40
         md:px-20
-        sm:px-10">
+        sm:px-10
+        max-sm:px-5">
           <div className="flex items-center gap-10">
             <Link to="/">
               <img src="/img/logoFull.png" alt="Moflix" className="w-25" />
