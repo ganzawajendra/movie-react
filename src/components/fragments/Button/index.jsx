@@ -6,6 +6,7 @@ const Button = ({navlink, children, style="bg-dark", padding = "px-4"}) => {
     <Link to={navlink} className={`${style} py-1.5 rounded text-sm font-semibold ${padding}
     lg:text-sm
     md:text-sm
+    sm:text-xs
     `}>
       {children}
     </Link>

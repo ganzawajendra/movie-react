@@ -10,7 +10,6 @@ import { BsPersonArmsUp } from "react-icons/bs";
 import { PiBinocularsFill } from "react-icons/pi";
 import CardReason from "./component/CardReason";
 import Footer from "../../components/fragments/Footer";
-import { useNavigate } from "react-router";
 import CategorySection from "../../components/fragments/CategorySection";
 
 const HomePage = () => {
@@ -68,12 +67,14 @@ const HomePage = () => {
           <div className="relative z-20 flex flex-col items-center">
             <h1 className="text-white text-5xl font-montserrat-thin transition-all duration-300
             lg:text-5xl
-            md:text-4xl">
+            md:text-4xl
+            sm:text-3xl">
               Welcome to Moflix
             </h1>
             <p className="text-white text-2xl font-lato tracking-wide transition-all duration-300
             lg:text-2xl
-            md:text-lg">
+            md:text-lg
+            sm:text-sm">
               Cari Info Film, Acara TV, dan Film Terbaru
             </p>
             <Button
@@ -86,11 +87,13 @@ const HomePage = () => {
         </div>
         <div className="pb-20 bg-manual-dark transition-all duration-300
         lg:px-40
-        md:px-20">
+        md:px-20
+        sm:px-10">
           <CategorySection>Top Rated Movies</CategorySection>
           <div className="grid grid-cols-5 gap-5 transition-all duration-300
           lg:grid-cols-5
-          md:grid-cols-4">
+          md:grid-cols-4
+          sm:grid-cols-3">
             {/* Movie cards go here */}
             {topMovies.slice(0, 10).map((movie) => (
               <CardMovie
@@ -113,13 +116,15 @@ const HomePage = () => {
         </div>
         <div className="pb-20 bg-manual-dark relative transition-all duration-300
         lg:px-40
-        md:px-20">
+        md:px-20
+        sm:px-10">
           <CategorySection>
             Alasan Untuk Bergabung
           </CategorySection>
           <div className="grid gap-5 transition-all duration-300
           lg:grid-cols-4
-          md:grid-cols-2">
+          md:grid-cols-2
+          sm:grid-cols-2">
             {reason.map((item, index) => (
               <CardReason
                 key={index}
